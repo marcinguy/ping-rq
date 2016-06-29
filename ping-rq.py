@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+""" Distributed ICMP ping  """
+
+__author__ = "Marcin Kozlowski <marcinguy@gmail.com>"
+
 from ping_module import isUp
 
 from redis import Redis
