@@ -1,0 +1,2 @@
+execute "rq worker" in project directory
+
