@@ -9,8 +9,8 @@ Distributed ICMP ping program with Redis and RQ. Scale your pings.
 
 ## Dependencies
 
-
 pip install redis
+
 pip install rq
 
 other standard modules (see import clause)
@@ -26,6 +26,7 @@ Setup Redis on local host (https://www.digitalocean.com/community/tutorials/how-
 
 ```
 root@marcin-lap:~/ping-rq# ./ping-rq.py -i ips.txt -o out.txt -s yes
+root@marcin-lap:~/ping-rq# more out.txt
 www.google.com,is up!
 8.8.8.8,is up!
 4.4.4.4,is down!
@@ -39,6 +40,7 @@ Redis worker output
 1 worker
 
 ```
+root@marcin-lap:~/ping-rq# rq worker
 
 12:06:33 *** Listening on default...
 13:50:44 default: ping_module.isUp('www.google.com') (0535431e-aaf9-49bb-af4c-242660a6cecd)
@@ -56,7 +58,9 @@ Redis worker output
 ```
 
 2 worker
+
 ```
+root@marcin-lap:~/ping-rq# rq worker
 12:06:34 *** Listening on default...
 13:50:44 default: ping_module.isUp('8.8.8.8') (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
 13:50:44 default: Job OK (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
