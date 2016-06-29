@@ -44,9 +44,7 @@ if __name__ == '__main__':
     for ret in results_list:
         while(ret.status!="finished"):
             time.sleep(0.01)
-        print ret.return_value
-    #for r in results:
-    #  resfile.write(r+"\n")
+        resfile.write(ret.return_value+"\n")
 
 
 
