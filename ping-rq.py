@@ -38,7 +38,10 @@ if __name__ == '__main__':
       random.shuffle(lines)
       data = lines
     else:
-      data = open(input,'rU')
+      with open(input,'rU') as f:
+         lines = f.read().splitlines()
+      data = lines
+
     results_list = list()
     q = Queue(connection=Redis(host='localhost', port=6379))
     for ip in data:

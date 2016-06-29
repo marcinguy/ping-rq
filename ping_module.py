@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import os
 import platform
 import pprint
@@ -8,16 +6,14 @@ import random
 
 import os, sys, socket, struct, select, time
 
-from redis import Redis
+""" Distributed ICMP ping  """
 
-from rq import Queue
+__author__ = "Marcin Kozlowski <marcinguy@gmail.com>"
 
 
- 
 # From /usr/include/linux/icmp.h; your milage may vary.
 ICMP_ECHO_REQUEST = 8 # Seems to be the same on Solaris.
- 
- 
+
 def checksum(source_string):
     """
     I'm not too confident that this is right but testing seems
@@ -45,8 +41,6 @@ def checksum(source_string):
     answer = answer >> 8 | (answer << 8 & 0xff00)
  
     return answer
- 
- 
 def receive_one_ping(my_socket, ID, timeout):
     """
     receive the ping from the socket.
@@ -73,8 +67,6 @@ def receive_one_ping(my_socket, ID, timeout):
         timeLeft = timeLeft - howLongInSelect
         if timeLeft <= 0:
             return
- 
- 
 def send_one_ping(my_socket, dest_addr, ID):
     """
     Send one ping to the given >dest_addr<.
@@ -100,8 +92,6 @@ def send_one_ping(my_socket, dest_addr, ID):
     )
     packet = header + data
     my_socket.sendto(packet, (dest_addr, 1)) # Don't know about the 1
- 
- 
 def do_one(dest_addr, timeout):
     """
     Returns either the delay (in seconds) or none on timeout.
@@ -125,8 +115,6 @@ def do_one(dest_addr, timeout):
     delay = receive_one_ping(my_socket, my_ID, timeout)
     my_socket.close()
     return delay
- 
- 
 def verbose_ping(dest_addr, timeout = 2, count = 4):
     """
     Send >count< ping to >dest_addr< with the given >timeout< and display
@@ -146,12 +134,6 @@ def verbose_ping(dest_addr, timeout = 2, count = 4):
             delay  =  delay * 1000
             print "get ping in %0.4fms" % delay
     print
-
-
-
-
-
-
 def isUp(data):
     temp=data.rstrip()
     hostname=temp.split(',')[0]
