@@ -22,7 +22,7 @@ Everything is in the repo , so just drop the files to where you want to use it.
 
 ## Usage
 
-Setup Redis on local host (https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04). Run workers with "rq worker" command in project directory. Execute ping-rq.py to start pinging from your distributed system.
+Setup Redis on localhost (https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04). Run workers with "rq worker" command in project directory. Execute ping-rq.py to start pinging from your distributed system.
 
 ```
 root@marcin-lap:~/ping-rq# ./ping-rq.py -i ips.txt -o out.txt -s yes
@@ -61,6 +61,7 @@ root@marcin-lap:~/ping-rq# rq worker
 
 ```
 root@marcin-lap:~/ping-rq# rq worker
+
 12:06:34 *** Listening on default...
 13:50:44 default: ping_module.isUp('8.8.8.8') (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
 13:50:44 default: Job OK (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
@@ -75,7 +76,7 @@ root@marcin-lap:~/ping-rq# rq worker
 13:50:45 *** Listening on default...
 ```
 
-
+Worker 1 and Worker 2 can be distributed among hosts. We can scale amount of workers to n amount of workers.
 
 
 ## Website
