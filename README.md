@@ -10,7 +10,6 @@ Distributed ICMP ping program with Redis and RQ. Scale your pings.
 ## Dependencies
 
 pip install redis
-
 pip install rq
 
 other standard modules (see import clause)
@@ -61,6 +60,7 @@ root@marcin-lap:~/ping-rq# rq worker
 
 ```
 root@marcin-lap:~/ping-rq# rq worker
+
 12:06:34 *** Listening on default...
 13:50:44 default: ping_module.isUp('8.8.8.8') (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
 13:50:44 default: Job OK (20e53198-ae37-4faf-ba6d-0c45f9cb2d16)
