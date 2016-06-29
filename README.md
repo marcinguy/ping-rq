@@ -10,6 +10,7 @@ Distributed ICMP ping program with Redis and RQ. Scale your pings.
 ## Dependencies
 
 pip install redis
+
 pip install rq
 
 other standard modules (see import clause)
@@ -21,7 +22,7 @@ Everything is in the repo , so just drop the files to where you want to use it.
 
 ## Usage
 
-Setup Redis on local host (https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04). Run workers with "rq worker" command in project directory. Execute ping-rq.py to start pinging from your distributed system.
+Setup Redis on localhost (https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04). Run workers with "rq worker" command in project directory. Execute ping-rq.py to start pinging from your distributed system.
 
 ```
 root@marcin-lap:~/ping-rq# ./ping-rq.py -i ips.txt -o out.txt -s yes
@@ -75,7 +76,7 @@ root@marcin-lap:~/ping-rq# rq worker
 13:50:45 *** Listening on default...
 ```
 
-
+Worker 1 and Worker 2 can be distributed among hosts. We can scale amount of workers to n amount of workers.
 
 
 ## Website
